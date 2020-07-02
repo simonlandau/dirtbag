@@ -2,6 +2,39 @@ target
 tomcat.8080
 tomcat.5000
 
+.metadata
+.classpath
+
+
 # IntelliJ Idea project files
 .idea
 *.iml
+
+*.pydevproject
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+/bin/
+© 2020 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+
