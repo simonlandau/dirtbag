@@ -10,18 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(
-        name = "MyServlet", 
-        urlPatterns = {"/hello"}
+        name = "SearchServlet", 
+        urlPatterns = {"/SearchServlet"}
     )
-public class HelloServlet extends HttpServlet {
+public class SearchServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        ServletOutputStream out = resp.getOutputStream();
-        out.write("hello heroku".getBytes());
-        out.flush();
-        out.close();
+    	
+    		System.out.println("Enter Search Servlet");
+        	String query = req.getParameter("query");
+        	System.out.println(query);
     }
     
 }

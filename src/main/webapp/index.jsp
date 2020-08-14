@@ -14,8 +14,8 @@
                 <h1>dirtbag dictionary</h1>
             </div>
             <div class="head-bot">
-                <form action="">
-                    <input type="text" placeholder="Type any word...">
+                <form method="GET" action="SearchServlet">
+                    <input type="text" name="query" placeholder="Type any word...">
                     <button type="submit"><i class="fa fa-search" aria-hidden="true" style="font-size:25px; color:#dadada;"></i></button>
                 </form>
             </div>
