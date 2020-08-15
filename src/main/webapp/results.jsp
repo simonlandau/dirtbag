@@ -21,6 +21,12 @@
                     <input type="text" name="query" placeholder="Type any word...">
                     <button type="submit"><i class="fa fa-search" aria-hidden="true" style="font-size:25px; color:#dadada;"></i></button>
                 </form>
+                <form method="POST" action="AlphaListServlet">
+                	<button type=submit><i class="fa fa-sort-alpha-asc" aria-hidden="true" style="font-size:25px; color:#dadada;"></i></button>
+                </form>
+                <form method="GET" action="RandomServlet">
+                	<button type=submit><i class="fa fa-random" aria-hidden="true" style="font-size:25px; color:#dadada;"></i></button>
+                </form>
             </div>
         </div>
     </header>

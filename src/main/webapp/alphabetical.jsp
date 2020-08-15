@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.*"%>
+<%@ page import="models.Pair"%>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://use.fontawesome.com/e732d6cbfa.js"></script>
-    <title>Dirtbag Dictionary | Home</title>
+    <title>Dirtbag Dictionary | Alphabetical Word List</title>
 </head>
 <body>
     <header>
@@ -31,6 +35,18 @@
     </header>
     <section class="homepage">
         <div class="spotlight">
+        	<% 
+        		ArrayList<Pair> alphaList = (ArrayList<Pair>) session.getAttribute("alphaList");
+				
+        		for(int i= 0; i < alphaList.size(); i++) {
+			%>
+				<div class="result">
+					<h3><%=alphaList.get(i).getWord()%></h3>
+					<p><%=alphaList.get(i).getDef()%> </p>
+				</div>
+			<%
+				}
+			%>
         </div>
     </section>
 </body>

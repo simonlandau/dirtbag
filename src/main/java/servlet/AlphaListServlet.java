@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,20 +19,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import models.Pair;
+
 @WebServlet(
-        name = "SearchServlet", 
-        urlPatterns = {"/SearchServlet"}
+        name = "AlphaListServlet", 
+        urlPatterns = {"/AlphaListServlet"}
     )
-public class SearchServlet extends HttpServlet {
+public class AlphaListServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
     	
-    		System.out.println("Enter Search Servlet");
-        	String query =  "%" + req.getParameter("query") + "%";
-        	System.out.println("The query is " + query);
-        	
         	try {
     			
     			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -45,24 +44,23 @@ public class SearchServlet extends HttpServlet {
     			System.out.println("Succesfully connected to the database");
     			
     			System.out.println("running MySQL statement...");
-    			ps = conn.prepareStatement("SELECT * FROM deftable WHERE Word LIKE ?");
-    			ps.setString(1,query);
+    			ps = conn.prepareStatement("SELECT * FROM deftable ORDER BY Word");
     			rs = ps.executeQuery();
-    			System.out.println("MySQL statement ran succesfully");
-    			
+    			System.out.println("MySQL statement ran succesfully");		
     			System.out.println("Print results to the console");
     			
-    			Map<String, String> wordMap = new HashMap<String, String>(); 
+    			ArrayList<Pair> alphaList = new ArrayList<Pair>();
     			
     			while(rs.next()) {
     				System.out.println( rs.getString("Word") + ": " + rs.getString("Definitions"));
-    				wordMap.put(rs.getString("Word"), rs.getString("Definitions"));
+    				Pair temp = new Pair(rs.getString("word"),rs.getString("Definitions"));
+    				alphaList.add(temp);
     			}
     			
     			HttpSession session = req.getSession();
-    			session.setAttribute("wordMap", wordMap);
+    			session.setAttribute("alphaList", alphaList);
     			
-    			RequestDispatcher dispatcher = req.getRequestDispatcher("results.jsp");
+    			RequestDispatcher dispatcher = req.getRequestDispatcher("alphabetical.jsp");
     	        dispatcher.forward(req, resp);
     			
         	}catch(Exception e) {

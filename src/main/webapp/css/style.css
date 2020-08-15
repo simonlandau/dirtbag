@@ -25,13 +25,19 @@ header{
     margin-bottom:10px;
 }
 
+.head-bot {
+	display:flex;
+	flex-direction:row;
+	justify-content:space-between;
+}
+
 .head-bot form {
     display:flex;
     align-items: center;
 }
 
 .head-bot form input {
-    width:918px;
+    width:780px;
     height:40px;
     margin-left:0;
     margin-right:20px;
