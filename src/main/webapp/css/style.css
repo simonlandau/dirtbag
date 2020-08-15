@@ -39,7 +39,7 @@ header{
     margin-bottom:0;
     padding-left:10px;
     font-size:20px;
-    color:#cfd6e8;
+    /*color:#cfd6e8;*/
     border-width:1px;
     border-style:solid;
     border-color: #82ad2a;
@@ -65,4 +65,24 @@ header{
     overflow:hidden;
     background-color:#fff;
     padding-bottom:500px;
+}
+
+.result {
+	width:600px;
+	background-color:#dadada;
+	margin:auto;
+	margin-top:20px;
+}
+
+.result h3 {
+	padding:10px;
+	padding-bottom:5px;
+	margin:0;
+	color:#445918;
+}
+
+.result p {
+	padding:10px;
+	padding-top:5px;
+	margin:0;
 }

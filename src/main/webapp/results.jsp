@@ -34,8 +34,10 @@
         	        Map.Entry pair = (Map.Entry)it.next();
         	 
 			%>
-				<h3><%=pair.getKey() %></h3>
-				<p><%=pair.getValue() %> </p>
+				<div class="result">
+					<h3><%=pair.getKey() %></h3>
+					<p><%=pair.getValue() %> </p>
+				</div>
 			<%
 			 		it.remove();
 				}
