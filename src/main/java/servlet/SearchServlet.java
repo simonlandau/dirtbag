@@ -6,13 +6,17 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(
         name = "SearchServlet", 
@@ -47,9 +51,20 @@ public class SearchServlet extends HttpServlet {
     			System.out.println("MySQL statement ran succesfully");
     			
     			System.out.println("Print results to the console");
+    			
+    			Map<String, String> wordMap = new HashMap<String, String>(); 
+    			
     			while(rs.next()) {
     				System.out.println( rs.getString("Word") + ": " + rs.getString("Definitions"));
+    				wordMap.put(rs.getString("Word"), rs.getString("Definitions"));
     			}
+    			
+    			HttpSession session = req.getSession();
+    			session.setAttribute("wordMap", wordMap);
+    			
+    			RequestDispatcher dispatcher = req.getRequestDispatcher("results.jsp");
+    	        dispatcher.forward(req, resp);
+    			
     			
         	}catch(Exception e) {
         		System.out.println("ur shit is fucked");

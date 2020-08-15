@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.*"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://use.fontawesome.com/e732d6cbfa.js"></script>
-    <title>Dirtbag Dictionary | Home</title>
+    <title>Dirtbag Dictionary | Results</title>
 </head>
 <body>
     <header>
@@ -25,6 +26,20 @@
     </header>
     <section class="homepage">
         <div class="spotlight">
+        	<% 
+        		Map<String, String> wordMap = (HashMap<String,String>) session.getAttribute("wordMap");
+        		Iterator it = wordMap.entrySet().iterator();
+				
+        	    while (it.hasNext()) {
+        	        Map.Entry pair = (Map.Entry)it.next();
+        	 
+			%>
+				<h3><%=pair.getKey() %></h3>
+				<p><%=pair.getValue() %> </p>
+			<%
+			 		it.remove();
+				}
+			%>
         </div>
     </section>
 </body>
