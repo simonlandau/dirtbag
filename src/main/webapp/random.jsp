@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://use.fontawesome.com/e732d6cbfa.js"></script>
-    <title>Dirtbag Dictionary | Alphabetical Word List</title>
+    <title>Dirtbag Dictionary | Random Word</title>
 </head>
 <body>
     <header>
@@ -36,17 +36,13 @@
     <section class="homepage">
         <div class="spotlight">
         	<% 
-        		ArrayList<Pair> alphaList = (ArrayList<Pair>) session.getAttribute("alphaList");
-				
-        		for(int i= 0; i < alphaList.size(); i++) {
+        		Pair randomWord = (Pair) session.getAttribute("randomWord");
 			%>
-				<div class="result">
-					<h3><%=alphaList.get(i).getWord()%></h3>
-					<p><%=alphaList.get(i).getDef()%> </p>
-				</div>
-			<%
-				}
-			%>
+			<div class="result">
+				<h3><%=randomWord.getWord() %></h3>
+				<p><%=randomWord.getDef()%> </p>
+			</div>
+
         </div>
     </section>
 </body>
